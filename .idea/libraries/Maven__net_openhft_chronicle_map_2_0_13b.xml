@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: net.openhft:chronicle-map:2.0.13b">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/net/openhft/chronicle-map/2.0.13b/chronicle-map-2.0.13b.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/net/openhft/chronicle-map/2.0.13b/chronicle-map-2.0.13b-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/net/openhft/chronicle-map/2.0.13b/chronicle-map-2.0.13b-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

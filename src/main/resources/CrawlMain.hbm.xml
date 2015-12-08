@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.pojo.CrawlMain" table="crawl_main" schema="" catalog="lagou">
+        <id name="id" type="integer" column="id">
+            <generator class="increment"></generator>
+        </id>
+        <property name="score" column="score"/>
+        <property name="formatCreateTime" column="formatCreateTime"/>
+        <property name="createTime" column="createTime"/>
+        <property name="positionId" column="positionId"/>
+        <property name="deliverCount" column="deliverCount"/>
+        <property name="positionName" column="positionName"/>
+        <property name="positionType" column="positionType"/>
+        <property name="workYear" column="workYear"/>
+        <property name="education" column="education"/>
+        <property name="jobNature" column="jobNature"/>
+        <property name="companyLogo" column="companyLogo"/>
+        <property name="industryField" column="industryField"/>
+        <property name="positionAdvantage" column="positionAdvantage"/>
+        <property name="salary" column="salary"/>
+        <property name="positionFirstType" column="positionFirstType"/>
+        <property name="leaderName" column="leaderName"/>
+        <property name="companySize" column="companySize"/>
+        <property name="companyName" column="companyName"/>
+        <property name="companyId" column="companyId"/>
+        <property name="city" column="city"/>
+        <property name="financeStage" column="financeStage"/>
+        <property name="companyLabelList" column="companyLabelList"/>
+        <property name="companyShortName" column="companyShortName"/>
+        <property name="randomScore" column="randomScore"/>
+        <property name="adjustScore" column="adjustScore"/>
+        <property name="calcScore" column="calcScore"/>
+        <property name="orderBy" column="orderBy"/>
+        <property name="showOrder" column="showOrder"/>
+        <property name="haveDeliver" column="haveDeliver"/>
+        <property name="adWord" column="adWord"/>
+        <property name="countAdjusted" column="countAdjusted"/>
+        <property name="relScore" column="relScore"/>
+        <property name="imstate" column="imstate"/>
+        <property name="createTimeSort" column="createTimeSort"/>
+        <property name="positonTypesMap" column="positonTypesMap"/>
+        <property name="hrScore" column="hrScore"/>
+        <property name="flowScore" column="flowScore"/>
+        <property name="showCount" column="showCount"/>
+        <property name="pvScore" column="pvScore"/>
+        <property name="plus" column="plus"/>
+        <property name="totalCount" column="totalCount"/>
+        <property name="searchScore" column="searchScore"/>
+        <property name="cityid" column="cityid"/>
+        <property name="jobsubstyle3" column="jobsubstyle3"/>
+    </class>
+</hibernate-mapping>

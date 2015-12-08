@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="connection.url">jdbc:mysql://localhost:3306/lagou</property>
+    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+      <property name="hibernate.connection.username">root</property>
+      <property name="hibernate.connection.password">root</property>
+      <!--数据库用户名-->
+      <!--数据库密码-->
+      <!-- 操作Hibernate的配置 -->
+      <!--
+          方言：hibernate在执行查询的时候，指定哪种数据库来执行查询，因为每种数据库执行的查询是不同的
+       -->
+
+      <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+      <!--
+          映射文件to数据库表
+              * 指定程序运行时是否在数据库自动生成数据表
+              * create：如果数据库中没有表，可以创建表，但是每次操作都会先删除表，再创建表
+              * none：默认：不能通过hibernate的映射文件不能创建表，有表会直接操作
+              * update：如果数据库中没有表，可以创建表，如果有表，就直接操作，不需要创建表
+      -->
+      <property name="hibernate.hbm2ddl.auto">update</property>
+      <!--
+          在控制台显示sql语句（方便我们查看hibernate底层输出的sql）
+       -->
+      <property name="hibernate.show_sql">true</property>
+
+
+      <mapping resource="CrawlMain.hbm.xml"/>
+      <mapping resource="LagouCity.hbm.xml"/>
+      <mapping resource="LagouJobStyle.hbm.xml"/>
+
+      <!-- DB schema will be updated if needed -->
+    <!-- <property name="hbm2ddl.auto">update</property> -->
+  </session-factory>
+</hibernate-configuration>
