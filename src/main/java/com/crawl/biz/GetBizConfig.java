@@ -1,5 +1,6 @@
 package com.crawl.biz;
 
+import com.dao.CityAndJobConfig;
 import com.dao.CrawlDao;
 import com.gargoylesoftware.htmlunit.BrowserVersion;
 import com.gargoylesoftware.htmlunit.NicelyResynchronizingAjaxController;
@@ -35,7 +36,6 @@ public class GetBizConfig {
         String url =  "http://www.lagou.com/";
         Document doc = Jsoup.connect(url).get();
         config.insertJobStyle(doc);
-
 
 
 
@@ -80,7 +80,7 @@ public class GetBizConfig {
             cityList.add(lagouCity);
         }
         System.out.print(citys);
-        CrawlDao.getInstance().insertLaGouCitys(cityList);
+        CityAndJobConfig.getInstance().insertLaGouCitys(cityList);
     }
 
     public void insertJobStyle(Document doc){
@@ -108,7 +108,7 @@ public class GetBizConfig {
             }
 
         }
-        CrawlDao.getInstance().insertLaGouJobStyles(lagouJobStyles);
+        CityAndJobConfig.getInstance().insertLaGouJobStyles(lagouJobStyles);
 
 
     }

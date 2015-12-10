@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="dataSource"
+          class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/lagou"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+    </bean>
+
+    <!-- Definition for studentJDBCTemplate bean -->
+    <bean id="crawlMainService"
+          class="com.service.web.CrawlMainService">
+        <property name="dataSource"  ref="dataSource" />
+        <property name="jdbcTemplate"  ref="jdbcTemplate" />
+    </bean>
+
+    <bean id="jdbcTemplate"
+          class="org.springframework.jdbc.core.JdbcTemplate" abstract="false"
+          lazy-init="false" autowire="default" >
+        <property name="dataSource">
+            <ref bean="dataSource" />
+        </property>
+    </bean>
+
+   <!-- &lt;!&ndash; 配置JMS连接工厂 -->
+    <bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <property name="brokerURL" value="failover:(tcp://localhost:61616)" />
+    </bean>
+
+    <!-- 定义消息队列（Queue） -->
+    <bean id="queueDestination" class="org.apache.activemq.command.ActiveMQQueue">
+        <!-- 设置消息队列的名字 -->
+        <constructor-arg>
+            <value>queue_v4</value>
+        </constructor-arg>
+    </bean>
+
+    <!-- 配置JMS模板（Queue），Spring提供的JMS工具类，它发送、接收消息。 -->
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="connectionFactory" />
+        <property name="defaultDestination" ref="queueDestination" />
+        <property name="receiveTimeout" value="10000" />
+    </bean>
+
+    <!--queue消息生产者 -->
+    <bean id="producerService" class="com.service.web.ProducerServiceImpl">
+        <property name="jmsTemplate" ref="jmsTemplate"></property>
+    </bean>
+
+    <!--queue消息消费者 -->
+    <bean id="consumerService" class="com.service.web.ConsumerServiceImpl">
+        <property name="jmsTemplate" ref="jmsTemplate"></property>
+    </bean>
+
+
+
+    <!-- 配置消息队列监听者（Queue），代码下面给出，只有一个onMessage方法 -->
+    <bean id="queueMessageListener" class="com.service.web.QueueMessageListener" />
+
+    <!-- 消息监听容器（Queue），配置连接工厂，监听的队列是queue2，监听器是上面定义的监听器 -->
+    <bean id="jmsContainer"
+          class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+        <property name="connectionFactory" ref="connectionFactory" />
+        <property name="destination" ref="queueDestination" />
+        <property name="messageListener" ref="queueMessageListener" />
+
+    </bean>
+
+
+
+
+
+</beans>

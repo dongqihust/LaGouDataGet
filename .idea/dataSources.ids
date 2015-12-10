@@ -8,58 +8,60 @@
     <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
     <schema name="" catalog="lagou"/>
     <table name="crawl_main" schema="" catalog="lagou" type="TABLE">
-      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="score" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="formatCreateTime" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
-      <column name="createTime" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
-      <column name="positionId" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="cG9zdGlvbmlk5a+55bqU55qE6K+l5Y2V5L2N55qE5oub6IGY6aG16Z2i44CCaHR0cDovL3d3dy5sYWdvdS5jb20vam9icy97cG9zaXRpb25pZH0uaHRtbA=="/>
-      <column name="deliverCount" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="positionName" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
-      <column name="positionType" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
-      <column name="workYear" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
-      <column name="education" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
+      <column name="formatCreateTime" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="createTime" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="positionId" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="cG9zdGlvbmlk5a+55bqU55qE6K+l5Y2V5L2N55qE5oub6IGY6aG16Z2i44CCaHR0cDovL3d3dy5sYWdvdS5jb20vam9icy97cG9zaXRpb25pZH0uaHRtbA=="/>
+      <column name="deliverCount" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="positionName" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="positionType" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="workYear" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="education" sqlType="VARCHAR" precision="225" scale="0" nullable="true" jdbcType="12"/>
       <column name="jobNature" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
       <column name="companyLogo" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="industryField" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
+      <column name="industryField" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="positionAdvantage" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="salary" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
-      <column name="positionFirstType" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
-      <column name="leaderName" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
-      <column name="companySize" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
-      <column name="companyName" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
-      <column name="companyId" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
-      <column name="city" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
-      <column name="financeStage" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
+      <column name="salary" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="positionFirstType" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="leaderName" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="companySize" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="companyName" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="companyId" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="city" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="financeStage" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="companyLabelList" sqlType="VARCHAR" precision="300" scale="0" nullable="true" jdbcType="12"/>
-      <column name="companyShortName" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
-      <column name="randomScore" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="adjustScore" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="calcScore" sqlType="BIT" precision="1" scale="0" nullable="true" jdbcType="-7" def="YicwJw=="/>
-      <column name="orderBy" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="showOrder" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
-      <column name="haveDeliver" sqlType="BIT" precision="1" scale="0" nullable="true" jdbcType="-7" def="YicwJw=="/>
+      <column name="companyShortName" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="showOrder" sqlType="VARCHAR" precision="25" scale="0" nullable="true" jdbcType="12"/>
       <column name="adWord" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="countAdjusted" sqlType="BIT" precision="1" scale="0" nullable="true" jdbcType="-7"/>
-      <column name="relScore" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="imstate" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
-      <column name="createTimeSort" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="imstate" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="createTimeSort" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="positonTypesMap" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="hrScore" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="flowScore" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="showCount" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="pvScore" sqlType="DOUBLE" precision="20" scale="0" nullable="true" jdbcType="8"/>
-      <column name="plus" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
-      <column name="totalCount" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="searchScore" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="cityid" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="jobsubstyle3" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <primary-key name="PRIMARY" columns="id"/>
+      <column name="hrScore" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="flowScore" sqlType="VARCHAR" precision="11" scale="0" nullable="true" jdbcType="12"/>
+      <column name="showCount" sqlType="VARCHAR" precision="11" scale="0" nullable="true" jdbcType="12"/>
+      <column name="pvScore" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="totalCount" sqlType="VARCHAR" precision="11" scale="0" nullable="true" jdbcType="12"/>
+      <column name="searchScore" sqlType="VARCHAR" precision="11" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cityid" sqlType="VARCHAR" precision="5" scale="0" nullable="true" jdbcType="12"/>
+      <column name="jobsubstyle3" sqlType="VARCHAR" precision="5" scale="0" nullable="true" jdbcType="12"/>
     </table>
     <table name="lagou_city" schema="" catalog="lagou" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="city" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="id"/>
       <index name="city" unique="true" columns="city"/>
+    </table>
+    <table name="lagou_company" schema="" catalog="lagou" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="companyid" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <index name="companyid" unique="true" columns="companyid"/>
+    </table>
+    <table name="lagou_job_desciption" schema="" catalog="lagou" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="positionid" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="workdesption" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="wordrequire" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
     </table>
     <table name="lagou_job_style" schema="" catalog="lagou" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>

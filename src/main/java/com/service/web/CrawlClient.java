@@ -1,10 +1,10 @@
 package com.service.web;
 
+import com.SpringContext;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.dao.CrawlDao;
-import com.pojo.CrawlMain;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.methods.RequestBuilder;
@@ -32,7 +32,6 @@ public class CrawlClient {
     private CrawlClient() {
 
     }
-
 
     public static void main(String[] args) {
         CrawlClient crawlClient = new CrawlClient();
@@ -62,7 +61,6 @@ public class CrawlClient {
          //   crawlClient.insertResponseToDb(results);
         }
 
-
     }
 
 
@@ -82,26 +80,9 @@ public class CrawlClient {
         return sb.toString();
     }
 
-
-
     public void insertResponseToDb(JSONArray results,int cityid, int jobstyleid) {
-        Object[] os = results.toArray();
-
-        List<CrawlMain> crawlMainList = new ArrayList<CrawlMain>(15);
-        for (Object result : os) {
-            JSONObject resultObject = (JSONObject) result;
-            String companyLabelListString = resultObject.remove("companyLabelList").toString();
-            String companyLabelListTemp = companyLabelListString.replace("\"", "").replace("]", "").replace("[", "");
-            resultObject.put("companyLabelList", new String(companyLabelListTemp).intern());
-            resultObject.put("cityid",cityid);
-            resultObject.put("jobsubstyle3",jobstyleid);
-            CrawlMain cm = JSON.parseObject(resultObject.toString(), CrawlMain.class);
-            crawlMainList.add(cm);
-        }
-
-        CrawlDao.getInstance().insertCrawlJob(crawlMainList);
-
-
+       CrawlMainService crawlMainService = (CrawlMainService) SpringContext.getInstance().getBean("crawlMainService");
+       crawlMainService.insertCrawlMains(results,cityid,jobstyleid);
     }
 
 

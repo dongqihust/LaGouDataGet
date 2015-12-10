@@ -30,7 +30,6 @@
       <property name="hibernate.show_sql">true</property>
 
 
-      <mapping resource="CrawlMain.hbm.xml"/>
       <mapping resource="LagouCity.hbm.xml"/>
       <mapping resource="LagouJobStyle.hbm.xml"/>
 

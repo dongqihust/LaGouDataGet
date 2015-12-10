@@ -1,9 +1,11 @@
 package com.pojo;
 
+import java.io.Serializable;
+
 /**
  * Created by 95 on 2015/12/6.
  */
-public class LagouJobStyle {
+public class LagouJobStyle implements Serializable{
     private int id;
     private String substyle1;
     private String substyle2;
