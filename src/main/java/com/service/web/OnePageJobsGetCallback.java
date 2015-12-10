@@ -58,15 +58,16 @@ public class OnePageJobsGetCallback implements FutureCallback<HttpResponse> {
         }
 
         JSONArray results = crawlClient.getResult(sb.toString());
-
-        if(results!=null&&results.size()!=0){
-            try {
-                ProducerServiceImpl producerService = (ProducerServiceImpl) SpringContext.getInstance().getBean("producerService");
-                producerService.sendMessage(new CrawlMainMessage(lagouCity, lagouJobStyle, results));
-            }catch (Exception e){
-                logger.error(e);
-            }
-        }
+        CrawlClient.getInstance().insertResponseToDb(results,lagouCity.getId(), lagouJobStyle.getId());
+        logger.error("当前插入是的" + lagouCity.getCity()+",lagouJobStyle"+lagouJobStyle.getSubstyle3());
+//        if(results!=null&&results.size()!=0){
+//            try {
+//                ProducerServiceImpl producerService = (ProducerServiceImpl) SpringContext.getInstance().getBean("producerService");
+//                producerService.sendMessage(new CrawlMainMessage(lagouCity, lagouJobStyle, results));
+//            }catch (Exception e){
+//                logger.error(e);
+//            }
+//        }
     }
 
     public void failed(Exception e) {
@@ -74,7 +75,7 @@ public class OnePageJobsGetCallback implements FutureCallback<HttpResponse> {
     }
 
     public void cancelled() {
-
+        logger.error("cancelled");
     }
 
 

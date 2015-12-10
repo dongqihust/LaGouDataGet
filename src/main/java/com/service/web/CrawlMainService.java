@@ -68,7 +68,6 @@ public class CrawlMainService {
                CrawlMains.add(jsonObject);
                crawlDao.addPositionId(jsonObject.getInteger("positionId"),1);
            }
-
        }
         if(CrawlMains.size()>0){
             insertCrawlMains(CrawlMains);
