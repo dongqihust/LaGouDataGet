@@ -58,16 +58,19 @@ public class OnePageJobsGetCallback implements FutureCallback<HttpResponse> {
         }
 
         JSONArray results = crawlClient.getResult(sb.toString());
-        CrawlClient.getInstance().insertResponseToDb(results,lagouCity.getId(), lagouJobStyle.getId());
-        logger.error("当前插入是的" + lagouCity.getCity()+",lagouJobStyle"+lagouJobStyle.getSubstyle3());
-//        if(results!=null&&results.size()!=0){
-//            try {
-//                ProducerServiceImpl producerService = (ProducerServiceImpl) SpringContext.getInstance().getBean("producerService");
-//                producerService.sendMessage(new CrawlMainMessage(lagouCity, lagouJobStyle, results));
-//            }catch (Exception e){
-//                logger.error(e);
-//            }
-//        }
+        if(results==null||results.size()==0){
+            logger.error("当前的数据虽然采集到了。但是并没有数据:=====" + lagouCity.getCity()+",lagouJobStyle"+lagouJobStyle.getSubstyle3());
+        }else{
+            logger.error("当前插入是的" + lagouCity.getCity()+",lagouJobStyle"+lagouJobStyle.getSubstyle3());
+                try {
+                    ProducerServiceImpl producerService = (ProducerServiceImpl) SpringContext.getInstance().getBean("producerService");
+                    producerService.sendMessage(new CrawlMainMessage(lagouCity, lagouJobStyle, results));
+                }catch (Exception e){
+                    logger.error(e);
+                }
+        }
+
+
     }
 
     public void failed(Exception e) {
@@ -78,6 +81,22 @@ public class OnePageJobsGetCallback implements FutureCallback<HttpResponse> {
         logger.error("cancelled");
     }
 
+//    class InsertCrawlThread extends Thread{
+//       private  JSONArray results;
+//        private  int  cityid;
+//        private  int jobstyle3id;
+//
+//        public InsertCrawlThread(JSONArray results, int cityid, int jobstyle3id) {
+//            this.results = results;
+//            this.cityid = cityid;
+//            this.jobstyle3id = jobstyle3id;
+//        }
+//
+//        @Override
+//        public void run() {
+//            CrawlClient.getInstance().insertResponseToDb(results,cityid,jobstyle3id);
+//        }
+//    }
 
 
 

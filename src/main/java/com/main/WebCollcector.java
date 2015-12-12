@@ -32,23 +32,42 @@ public class WebCollcector {
         //初次抓取，模拟得到cookie
         CrawlClient crawlClient = CrawlClient.getInstance();
         BasicCookieStore cookieStore = new BasicCookieStore();
-        CloseableHttpClient httpClient = HttpClients.custom()
-                .setDefaultCookieStore(cookieStore).build();
+        CloseableHttpClient httpClient = null;
+        CloseableHttpAsyncClient httpAsyncClient=null;
+        try {
+             httpClient = HttpClients.custom()
+                    .setDefaultCookieStore(cookieStore).build();
 
-        //开启异步抓取客户端
-        CloseableHttpAsyncClient httpAsyncClient = HttpAsyncClients.custom().setDefaultCookieStore(cookieStore).build();
-        httpAsyncClient.start();
-        //获取城市和职位列表，通过这两项来搜索数据
-        List<LagouCity> lagouCityList = CityAndJobConfig.getInstance().getAllLaGouCitys();
-        List<LagouJobStyle> lagouJobStyleList = CityAndJobConfig.getInstance().getAllLaGouJobStyles();
+            //开启异步抓取客户端
+             httpAsyncClient = HttpAsyncClients.custom().setDefaultCookieStore(cookieStore).build();
+            httpAsyncClient.start();
+            //获取城市和职位列表，通过这两项来搜索数据
+            List<LagouCity> lagouCityList = CityAndJobConfig.getInstance().getAllLaGouCitys();
+            List<LagouJobStyle> lagouJobStyleList = CityAndJobConfig.getInstance().getAllLaGouJobStyles();
 
-        int i=1;
-        for(LagouCity lagouCity : lagouCityList){
-            for(LagouJobStyle lagouJobStyle :lagouJobStyleList){
-                OnePageJobsGetCallback onePageJobsGetCallback = new OnePageJobsGetCallback(lagouCity,lagouJobStyle);
-                logger.error(lagouCity.getCity() + "   --" + lagouJobStyle.getSubstyle3() + "   -----" + i++);
-                webCollectService.extractJobInfosAsyn(onePageJobsGetCallback, crawlClient, httpAsyncClient, httpClient);
+            int i=1;
+
+
+
+            for(LagouCity lagouCity : lagouCityList){
+                if(lagouCity.getCity().equals("武汉")){
+                    for(LagouJobStyle lagouJobStyle :lagouJobStyleList){
+                        if(lagouJobStyle.getId()>0){
+                            OnePageJobsGetCallback onePageJobsGetCallback = new OnePageJobsGetCallback(lagouCity,lagouJobStyle);
+                            logger.error(lagouCity.getCity() + "   --" + lagouJobStyle.getSubstyle3() + "   -----" + i++);
+                            webCollectService.extractJobInfosAsyn(onePageJobsGetCallback, crawlClient, httpAsyncClient, httpClient);
+                        }
+
+                    }
+                }
+
             }
+
+        }catch (Exception e){
+            logger.error(e);
+        }finally {
+       //   httpAsyncClient.close();
+       //   httpClient.close();
         }
 
 

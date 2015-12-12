@@ -31,7 +31,7 @@ public class ChonicleService {
 
     private void initChronicleMap() {
         String tmp = System.getProperty("java.io.tmpdir");
-        String pathname = tmp + "lagou_postionid_v5.dat";
+        String pathname = tmp + "lagou_postionid_v11.dat";
 
         File file = new File(pathname);
 

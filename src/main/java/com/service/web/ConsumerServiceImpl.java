@@ -24,6 +24,7 @@ public class ConsumerServiceImpl  {
      ObjectMessage message = (ObjectMessage) jmsTemplate.receive(destination);;
      if(message!=null){
     CrawlMainMessage tm = (CrawlMainMessage)message.getObject();
+         logger.error("=================");
     CrawlClient.getInstance().insertResponseToDb(tm.getResults(), tm.getLagouCity().getId(), tm.getLagouJobStyle().getId());
     }else{
          logger.warn("当前消费者并未获取数据");

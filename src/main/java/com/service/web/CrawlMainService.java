@@ -62,17 +62,17 @@ public class CrawlMainService {
         CrawlDao crawlDao = CrawlDao.getInstance();
        for(Object object : jsonArray){
            JSONObject jsonObject = (JSONObject) object;
-           if(crawlDao.getPositionId(jsonObject.getInteger("positionId"))==0){
                jsonObject.put("cityid",cityid+"");
                jsonObject.put("jobsubstyle3",subtype3+"");
                CrawlMains.add(jsonObject);
                crawlDao.addPositionId(jsonObject.getInteger("positionId"),1);
-           }
        }
         if(CrawlMains.size()>0){
-            insertCrawlMains(CrawlMains);
+           insertCrawlMains(CrawlMains);
         }else{
             logger.error("当前城市和职位下，并未收到数据,cityid="+cityid+"  ,subtype3="+subtype3);
+            logger.error(jsonArray);
+
         }
     }
 
